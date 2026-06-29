@@ -1,0 +1,58 @@
+=== CYCLE DE VIE DES POULETS ===
+
+1. POUSSIN (0-8 semaines)
+   - Âge: 0 à 56 jours
+   - Poids: 40g à 1.5kg
+   - Alimentation: démarrage (protéines 22-24%)
+   - Objectif: croissance rapide
+   - Suivi: mortalité, poids hebdomadaire
+
+2. POULET DE CHAIR (8-12 semaines)
+   - Âge: 56 à 84 jours
+   - Poids: 1.5kg à 2.5kg
+   - Alimentation: croissance (protéines 20-22%)
+   - Objectif: poids commercial (2-2.5kg)
+
+3. POULET FINI (12-16 semaines)
+   - Âge: 84 à 112 jours
+   - Poids: 2.5kg à 3.5kg
+   - Alimentation: finition (protéines 18-20%)
+   - Objectif: poids final (3-3.5kg)
+
+4. POULE PONDEUSE (à partir de 16 semaines)
+   - Âge: 112+ jours
+   - Poids: 1.8-2.5kg
+   - Alimentation: ponte (protéines 16-18%)
+   - Objectif: production d'œufs
+
+5. GESTION DES ŒUFS
+   - Collecte: 2-3 fois par jour
+   - Stockage: 15-18°C, humidité 75-80%
+   - Conservation: 28 jours maximum
+   - Calibrage: S (<55g), M (55-62g), L (63-70g), XL (>70g)
+
+=== INDICATEURS DE PERFORMANCE ===
+
+1. Taux de ponte = (Œufs produits / Nombre de poules) × 100
+   - Bon: 85-95%
+   - Excellent: 95%+
+
+2. Poids moyen des œufs
+   - Petit: <55g
+   - Moyen: 55-62g
+   - Gros: 63-70g
+   - Très gros: >70g
+
+3. Consommation alimentaire
+   - Poulet chair: 2.5-3.5 kg aliment / kg poids
+   - Poule pondeuse: 120-150g aliment / jour
+
+4. Mortalité
+   - Acceptable: <5%
+   - Bon: <3%
+   - Excellent: <2%
+
+5. Feed Conversion Ratio (FCR)
+   - FCR = Aliment consommé / Poids gagné
+   - Bon: <2.0
+   - Excellent: <1.8
