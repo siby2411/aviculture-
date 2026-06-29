@@ -40,6 +40,7 @@
             <a href="/?route=ventes">💰 Ventes</a>
             <a href="/?route=charges">💳 Charges</a>
             <a href="/?route=rapports">📋 Rapports</a>
+            <a href="/?route=health<a href="/?route=rapports">📋 Rapports</a>id=<?php echo $batch['id'] ?? 0; ?>">🏥 Santé</a>
             <a href="/?route=upload">📸 Galerie</a>
         </nav>
     </div>

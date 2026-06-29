@@ -27,6 +27,20 @@
         }
         .quick-action:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
         .quick-action .icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+        .health-alert {
+            background: #FFF5F5;
+            border-left: 4px solid #E53E3E;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .health-ok {
+            background: #F0FFF4;
+            border-left: 4px solid #48BB78;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +70,34 @@
             <div class="status-item"><span>Mortalité</span><span><span class="status-dot yellow"></span> 3.2%</span></div>
         </div>
 
+        <!-- Module Prophylaxie dans la sidebar -->
+        <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem;">
+                <span style="font-size: 0.9rem; font-weight: 600;">🏥 Prophylaxie</span>
+                <span style="font-size: 0.7rem; background: #48BB78; padding: 0.2rem 0.5rem; border-radius: 12px;">Actif</span>
+            </div>
+            <?php
+            $healthModel = new \Models\HealthMonitoringModel();
+            $hasAlerts = false;
+            if (isset($batches)) {
+                foreach ($batches as $batch) {
+                    $alerts = $healthModel->getBatchAlerts($batch['id']);
+                    if (!empty($alerts)) {
+                        $hasAlerts = true;
+                        break;
+                    }
+                }
+            }
+            ?>
+            <div style="font-size: 0.8rem; padding: 0.25rem 0.5rem; color: <?php echo $hasAlerts ? '#E53E3E' : '#48BB78'; ?>;">
+                <?php echo $hasAlerts ? '🔴 Alertes actives' : '🟢 Tout va bien'; ?>
+            </div>
+            <a href="/?route=health&id=<?php echo isset($batches[0]) ? $batches[0]['id'] : 0; ?>" 
+               style="color: white; text-decoration: none; font-size: 0.8rem; display: block; padding: 0.25rem 0.5rem; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center; margin-top: 0.25rem;">
+                📊 Accéder au suivi
+            </a>
+        </div>
+
         <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.7rem; text-align: center; opacity: 0.6;">
             v2.0 • OMEGA CONSULTING
         </div>
@@ -64,6 +106,31 @@
     <div class="main-content">
         <h1 class="section-title">📊 Tableau de bord</h1>
         
+        <!-- Module Prophylaxie - Alertes -->
+        <?php if (isset($batches)): ?>
+            <?php foreach ($batches as $batch): ?>
+                <?php 
+                $alerts = $healthModel->getBatchAlerts($batch['id']);
+                if (!empty($alerts)): 
+                ?>
+                    <div class="health-alert">
+                        <strong>🚨 Alerte sanitaire - <?php echo htmlspecialchars($batch['name']); ?></strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem;">
+                            <?php foreach ($alerts as $alert): ?>
+                                <li><?php echo $alert; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <a href="/?route=health&id=<?php echo $batch['id']; ?>" style="color: #2D6A4F; font-weight: 600;">Voir les détails →</a>
+                    </div>
+                <?php else: ?>
+                    <div class="health-ok">
+                        ✅ <strong><?php echo htmlspecialchars($batch['name']); ?></strong> - Aucune alerte sanitaire
+                        <a href="/?route=health&id=<?php echo $batch['id']; ?>" style="color: #2D6A4F; font-weight: 600; margin-left: 1rem;">📊 Suivi</a>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
         <div class="quick-actions">
             <a href="/?route=lots&action=create" class="quick-action">
                 <span class="icon">🐣</span>
@@ -76,6 +143,10 @@
             <a href="/?route=charges&action=add" class="quick-action">
                 <span class="icon">💳</span>
                 <div style="font-weight: 600;">Nouvelle charge</div>
+            </a>
+            <a href="/?route=health-add" class="quick-action" style="border-left: 3px solid #4299E1;">
+                <span class="icon">🏥</span>
+                <div style="font-weight: 600;">Check santé</div>
             </a>
             <a href="/?route=rapports" class="quick-action">
                 <span class="icon">📋</span>
@@ -126,6 +197,7 @@
         <div style="margin-top: 2rem; text-align: center;">
             <button onclick="window.print()" class="btn btn-primary">🖨️ Imprimer le rapport</button>
             <a href="/?route=upload" class="btn btn-gold" style="margin-left: 0.5rem;">📸 Gérer les images</a>
+            <a href="/?route=health&id=<?php echo isset($batches[0]) ? $batches[0]['id'] : 0; ?>" class="btn btn-info" style="margin-left: 0.5rem; background: #4299E1; color: white;">🏥 Suivi santé</a>
         </div>
 
         <!-- Footer OMEGA -->

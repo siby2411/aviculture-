@@ -85,6 +85,7 @@
             <a href="/?route=ventes">💰 Ventes</a>
             <a href="/?route=charges">💳 Charges</a>
             <a href="/?route=rapports">📋 Rapports</a>
+            <a href="/?route=health<a href="/?route=rapports">📋 Rapports</a>id=<?php echo $batch['id'] ?? 0; ?>">🏥 Santé</a>
             <a href="/?route=upload" class="active">📸 Galerie</a>
         </nav>
         <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.7rem; text-align: center; opacity: 0.6;">v2.0 • OMEGA CONSULTING</div>

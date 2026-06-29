@@ -304,3 +304,12 @@ nav a.active {
         display: none !important;
     }
 }
+.btn-info {
+    background: #4299E1;
+    color: white;
+}
+.btn-info:hover {
+    background: #2B6CB0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
